@@ -71,6 +71,14 @@ export default {
   '~/plugins/disqus',
   '~/plugins/global.js'
 ],
+
+sitemap: {
+  hostname: 'https://mateopg.com',
+},
+bootstrapVue: {
+  bootstrapCSS: false, // Or `css: false`
+  bootstrapVueCSS: true // Or `bvCSS: false`
+},
   /*
   ** Nuxt.js dev-modules
   */
