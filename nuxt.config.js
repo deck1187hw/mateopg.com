@@ -1,20 +1,55 @@
+const PrismicConfig = require("./prismic.config");
+const getAppRoutes = require('./utils/getRoutes.js');
 
 export default {
   mode: 'universal',
+  env: {
+    liveUrl: 'https://www.plasticamurillo.com/'
+  },
   /*
   ** Headers of the page
   */
-  head: {
-    title: process.env.npm_package_name || '',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
-  },
+ head: {
+  title: 'History of Places - Blog by Mateo Puig',
+  meta: [
+    { charset: 'utf-8' },
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { hid: 'description', name: 'description', content: 'Learn about the history of our planet, places, buildings, and other things that were important in the past or that have historical value nowadays' }
+  ],
+  link: [
+    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+  ],
+  script: [
+    {
+      innerHTML:
+        '{ window.prismic = { endpoint: "' +
+        PrismicConfig.apiEndpoint +
+        '"} }'
+    },
+    { src: "//static.cdn.prismic.io/prismic.min.js" },
+    {
+      src: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+    },
+    { src: "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" },
+    { src: "/js/flickity.min.js" },
+    { src: "/js/granim.min.js" },
+    { src: "/js/smooth-scroll.min.js" },
+  ],
+  link: [
+    {
+      rel: "stylesheet",
+      href:
+        "https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700"
+    },
+    { rel: "stylesheet", href: "/css/bootstrap.css" },
+    { rel: "stylesheet", href: "/css/socicon.css" },
+    { rel: "stylesheet", href: "/css/iconsmind.css" },
+    { rel: "stylesheet", href: "/css/theme.css" },
+    { rel: "stylesheet", href: "/css/flickity.css" },
+    { rel: "stylesheet", href: "/css/stack-interface.css" }
+  ],
+  __dangerouslyDisableSanitizers: ["script"]
+},
   /*
   ** Customize the progress-bar color
   */
@@ -27,8 +62,15 @@ export default {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
-  ],
+ plugins: [
+  { src: '~plugins/vue-cookie-law.js', ssr: false },
+  "~/plugins/text-utils-plugin.js",
+  '~/plugins/link-resolver.js',
+  '~/plugins/html-serializer.js',
+  '~/plugins/vue-social-sharing.js',    
+  '~/plugins/disqus',
+  '~/plugins/global.js'
+],
   /*
   ** Nuxt.js dev-modules
   */
@@ -37,12 +79,19 @@ export default {
   /*
   ** Nuxt.js modules
   */
-  modules: [
-    // Doc: https://bootstrap-vue.js.org
-    'bootstrap-vue/nuxt',
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-  ],
+ modules: [
+  "bootstrap-vue/nuxt",
+  "@nuxtjs/axios",
+  "nuxt-simple-line-icons",
+  "@nuxtjs/pwa",
+  '@nuxtjs/sitemap',
+  [
+    "@nuxtjs/google-analytics",
+    {
+      id: ""
+    }
+  ]
+],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options

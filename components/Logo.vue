@@ -5,7 +5,7 @@
 .mateoPg {
   animation: 1s appear;
   margin: auto;
-  width: 200px;
+  width: 100px;
 }
 
 @keyframes appear {
