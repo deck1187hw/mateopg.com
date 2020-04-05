@@ -5,7 +5,9 @@
       <h1 class="title">
         Mi cerde
       </h1>
-      
+       <h2 class="subtitle">
+        Blog by Mateo Puig
+      </h2>
     </div>
   </div>
 </template>
