@@ -38,8 +38,10 @@
           
         </div>
         <div class="col-sm-5 text-right text-center-xs">
-          
-          <a class="type--fine-print" :href="$store.state.configuration.contact_email">{{$store.state.configuration.contact_email}}</a>
+          <nuxt-link :to="$i18n.path(``)"
+                > <img src="/logo_bn.png" class="mateoPg"/>
+          </nuxt-link>
+          <a class="type--fine-print" :href="`mailto:${$store.state.configuration.contact_email}`">{{$store.state.configuration.contact_email}}</a>
         </div>
       </div>
     </div>
@@ -71,5 +73,10 @@ export default {
 <style scoped>
 .imgbtn {
   width: 200px;
+}
+.mateoPg{
+  opacity: .8;
+  width: 40px;
+  
 }
 </style>
