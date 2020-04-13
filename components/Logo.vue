@@ -1,5 +1,5 @@
 <template>
-  <img src="logo.png" class="mateoPg"/>
+  <img src="/logo.png" class="mateoPg"/>
 </template>
 <style>
 .mateoPg {

@@ -4,7 +4,13 @@ const getAppRoutes = require('./utils/getRoutes.js');
 export default {
   mode: 'universal',
   env: {
-    liveUrl: 'https://www.plasticamurillo.com/'
+    liveUrl: 'https://www.mateopg.com/'
+  },
+  server: {
+    port: 3000
+  },
+  router: {
+    middleware: 'i18n'
   },
   /*
   ** Headers of the page
@@ -65,6 +71,7 @@ export default {
  plugins: [
   { src: '~plugins/vue-cookie-law.js', ssr: false },
   "~/plugins/text-utils-plugin.js",
+  "~/plugins/i18n.js",
   '~/plugins/link-resolver.js',
   '~/plugins/html-serializer.js',
   '~/plugins/vue-social-sharing.js',    
@@ -96,9 +103,10 @@ bootstrapVue: {
   [
     "@nuxtjs/google-analytics",
     {
-      id: ""
+      id: "UA-163502428-1"
     }
-  ]
+  ],
+    ['@nuxtjs/date-fns']
 ],
   /*
   ** Axios module configuration
@@ -114,6 +122,14 @@ bootstrapVue: {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+    }
+  },
+  generate: {
+    // https://nebulab.it/blog/create-fast-nuxtjs-website-prismic/
+    concurrency: 4,
+    routes: async function() {
+      const appRoutes = getAppRoutes()
+      return appRoutes
     }
   }
 }

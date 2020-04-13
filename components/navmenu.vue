@@ -8,7 +8,11 @@
               <Logo />
             </div>
             <div class="col-9 col-md-10 text-right">
-              <a href="#" class="hamburger-toggle" data-toggle-class="#menu2;hidden-xs hidden-sm">
+              <a
+                href="#"
+                class="hamburger-toggle"
+                data-toggle-class="#menu2;hidden-xs hidden-sm"
+              >
                 <i class="icon icon--sm stack-interface stack-menu"></i>
               </a>
             </div>
@@ -20,24 +24,52 @@
           <div class="row">
             <div class="col-lg-2 text-center text-left-sm hidden-xs order-lg-2">
               <div class="bar__module">
-                 <Logo />
+                <nuxt-link :to="$i18n.path('')"> <Logo /> </nuxt-link>
               </div>
             </div>
             <div class="col-lg-5 order-lg-1">
               <div class="bar__module">
                 <ul class="menu-horizontal text-left">
                   <li>
-                    <a href="#">Single</a>
+                    <nuxt-link :to="$i18n.path('')">
+                      {{ $t('inicio') }}
+                    </nuxt-link>
                   </li>
-               
+
+                  <li>
+                    <nuxt-link :to="$i18n.path('blog')">
+                      {{ $t('blog') }}
+                    </nuxt-link>
+                  </li>
+                  <li>
+                    <nuxt-link :to="$i18n.path('about-me')">
+                      {{ $t('about_me') }}
+                    </nuxt-link>
+                  </li>
                 </ul>
               </div>
             </div>
-            <div class="col-lg-5 text-right text-left-xs text-left-sm order-lg-3">
+            <div
+              class="col-lg-5 text-right text-left-xs text-left-sm order-lg-3"
+            >
               <div class="bar__module">
-                <a class="btn btn--sm type--uppercase" href="#">
-                  <span class="btn__text">Contact</span>
-                </a>
+                <div class="langs text-center text-sm-right">
+                  <a
+                    v-for="(item, index) in $store.state.languages"
+                    :key="index"
+                    :href="`/${localeShort(item.id)}`"
+                    class="flag-cont"
+                    v-bind:class="{
+                      active: $store.state.language.lang === item.id
+                    }"
+                  >
+                    <img
+                      class="flag1"
+                      :alt="`${item.name}`"
+                      :src="`/img/${item.id}.png`"
+                    />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
