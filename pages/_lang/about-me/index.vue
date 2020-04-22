@@ -59,6 +59,16 @@ export default {
    
     }
   },
+
+
+  head() {
+    return this.$generateMeta({
+      title: 'Mateo Puig Garcia',
+      image: this.$has(this, "$store.state.configuration.about_me_image.url")
+        ? this.$store.state.configuration.about_me_image.url
+        : null
+    });
+  },
   created() {
     this.$loadJSFiles()
   }

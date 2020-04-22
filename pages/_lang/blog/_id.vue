@@ -68,47 +68,20 @@ export default {
       }
     }
   },
+
+
   head() {
-    return {
-      title: this.Dom.RichText.asText(this.document.title),
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.descriptionSEO
-        },
-        {
-          hid: 'twitter:card',
-          name: 'twitter:card',
-          content: `Tratamiento - ${this.document.title}`
-        },
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: `Tratamiento - ${this.document.title}`
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: this.descriptionSEO
-        },
-        {
-          hid: 'og:title',
-          name: 'og:title',
-          content: `Tratamiento - ${this.document.title}`
-        },
-        {
-          hid: 'og:description',
-          name: 'og:description',
-          content: this.descriptionSEO
-        },
-        {
-          hid: 'og-image',
-          property: 'og-image',
-          content: this.document.main_image.url
-        }
-      ]
-    }
+    return this.$generateMeta({
+      title: this.$has(this, "document.title")
+        ? this.Dom.RichText.asText(this.document.title)
+        : null,
+      description: this.$has(this, "document.introduction")
+        ? this.Dom.RichText.asText(this.document.introduction)
+        : null,
+      image: this.$has(this, "document.main_image.url")
+        ? this.document.main_image.url
+        : null
+    });
   },
   created() {
     this.$loadJSFiles()
