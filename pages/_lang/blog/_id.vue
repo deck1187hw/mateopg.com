@@ -13,12 +13,18 @@
           <div class="col-md-10 col-lg-8">
             <h1>{{ Dom.RichText.asText(document.title) }}</h1>
             <p class="lead">
+     
+       
               <span>{{ $dateFns.format(document.date, 'dd MMMM yyy') }}</span>
               <br />
                <span class=" badge badge-primary">({{
                       document.category.slug
                     }})</span>
             </p> 
+            <p>        <span class="colaborators"
+                  >
+             {{document.colaboradores_blog.uid}}
+               </span></p>
           </div>
         </div>
       </div>
