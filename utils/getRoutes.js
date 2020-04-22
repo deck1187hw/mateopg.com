@@ -54,7 +54,7 @@ module.exports = async function getAppRoutes() {
     .then(response => {
       return response.results.map(payload => {
         return {
-          route: `/en/blog/${payload.uid}`,
+          route: `/blog/${payload.uid}`,
           payload
         };
       });
