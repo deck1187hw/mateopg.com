@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <section
-      class="cover imagebg text-center height-80 section--ken-burns"
+      class="cover imagebg text-center height-70 section--ken-burns"
       data-overlay="4"
     >
       <div class="background-image-holder">
@@ -18,6 +18,11 @@
             <h1>{{ Dom.RichText.asText(document.main_title) }}</h1>
             <p class="lead">
               {{ Dom.RichText.asText(document.main_description) }}
+     <br /><br />
+                  <nuxt-link class="btn btn--small" :to="$i18n.path(`blog`)">
+                    <span class="btn__text">{{ $t('view_blog') }}</span>
+                  </nuxt-link>
+        
             </p>
           </div>
         </div>
