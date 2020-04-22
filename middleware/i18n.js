@@ -39,11 +39,13 @@ export default async function ({ isHMR, app, store, route, params, error, redire
        
         store.commit("SET_CONFIGURATION", configuration);
 
-
+    
+    
     // If route is /<defaultLocale>/... -> redirect to /...
     if (locale === defaultLocale && route.fullPath.indexOf('/' + defaultLocale) === 0) {
       const toReplace = '^/' + defaultLocale + (route.fullPath.indexOf('/' + defaultLocale + '/') === 0 ? '/' : '')
       const re = new RegExp(toReplace)
+  
       return redirect(
         route.fullPath.replace(re, '/')
       )

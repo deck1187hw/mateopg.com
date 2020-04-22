@@ -32,7 +32,7 @@
                   <div class="article__title text-center">
                     <nuxt-link
                       v-if="doc.data.main_image.url"
-                      :to="`blog/${doc.uid}`"
+                      :to="$i18n.path(`blog/${doc.uid}`)"
                     >
                       <h2 v-html="Dom.RichText.asText(doc.data.title)"></h2>
                     </nuxt-link>
@@ -48,7 +48,7 @@
                   <div class="article__body">
                     <nuxt-link
                       v-if="doc.data.main_image.url"
-                      :to="`blog/${doc.uid}`"
+                      :to="$i18n.path(`blog/${doc.uid}`)"
                     >
                       <img
                         :alt="doc.data.main_image.alt"
@@ -58,7 +58,7 @@
                     <p v-html="Dom.RichText.asText(doc.data.introduction)"></p>
                     <nuxt-link
                       v-if="doc.data.main_image.url"
-                      :to="`blog/${doc.uid}`"
+                      :to="$i18n.path(`blog/${doc.uid}`)"
                       >{{ $t('continue_reading') }} »
                     </nuxt-link>
                   </div>
