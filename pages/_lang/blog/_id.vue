@@ -15,10 +15,10 @@
             <p class="lead">
               <span>{{ $dateFns.format(document.date, 'dd MMMM yyy') }}</span>
               <br />
-              
-            </p>  <span class="label label-primary">{{
+               <span class=" badge badge-primary">({{
                       document.category.slug
-                    }}</span>
+                    }})</span>
+            </p> 
           </div>
         </div>
       </div>

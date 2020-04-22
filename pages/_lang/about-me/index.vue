@@ -1,6 +1,7 @@
 <template>
   <div class="main-container">
     <section class="">
+     
       <div class="container">
         <div class="row justify-content-between">
           <div class="col-md-5">
@@ -51,7 +52,13 @@
 </template>
 
 <script>
+
 export default {
+   data: function() {
+    return {
+   
+    }
+  },
   created() {
     this.$loadJSFiles()
   }

@@ -1,6 +1,8 @@
 <template>
   <div>
+    
     <section class="text-center imagebg space--sm" data-overlay="4">
+   
       <div class="background-image-holder">
         <img
           :alt="$t('our_blog')"
@@ -106,7 +108,7 @@ export default {
       const blogs = await api.query(
         app.$Prismic.Predicates.at('document.type', 'blog_post'),
         {
-          orderings: '[document.first_publication_date]',
+          orderings: '[document.first_publication_date desc]',
           lang: store.state.language.lang
         }
       )
@@ -121,4 +123,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.masonry_2__item{
+  margin-top: 50px;
+}
+</style>

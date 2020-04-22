@@ -6,20 +6,24 @@
           <ul class="list-inline">
             <li>
               <nuxt-link :to="$i18n.path(``)"
-                ><span class="h6 type--uppercase">{{ $t('inicio') }}</span></nuxt-link
+                ><span class="h6 type--uppercase">{{
+                  $t('inicio')
+                }}</span></nuxt-link
               >
             </li>
             <li>
               <nuxt-link :to="$i18n.path(`blog`)"
-                ><span class="h6 type--uppercase">{{ $t('blog') }}</span></nuxt-link
+                ><span class="h6 type--uppercase">{{
+                  $t('blog')
+                }}</span></nuxt-link
               >
             </li>
 
             <li>
-                    <nuxt-link :to="$i18n.path('about-me')">
-                     <span class="h6 type--uppercase"> {{ $t('about_me') }}</span>
-                    </nuxt-link>
-                  </li>
+              <nuxt-link :to="$i18n.path('about-me')">
+                <span class="h6 type--uppercase"> {{ $t('about_me') }}</span>
+              </nuxt-link>
+            </li>
           </ul>
         </div>
         <div class="col-sm-5 text-right text-center-xs"></div>
@@ -34,14 +38,16 @@
             :to="$i18n.path(`privacy-policy`)"
             >{{ $t('privacy') }}</nuxt-link
           >
-
-          
         </div>
         <div class="col-sm-5 text-right text-center-xs">
-          <nuxt-link :to="$i18n.path(``)"
-                > <img src="/logo_bn.png" class="mateoPg"/>
+          <nuxt-link :to="$i18n.path(``)">
+            <img src="/logo_bn.png" class="mateoPg" />
           </nuxt-link>
-          <a class="type--fine-print" :href="`mailto:${$store.state.configuration.contact_email}`">{{$store.state.configuration.contact_email}}</a>
+          <a
+            class="type--fine-print"
+            :href="`mailto:${$store.state.configuration.contact_email}`"
+            >{{ $store.state.configuration.contact_email }}</a
+          >
         </div>
       </div>
     </div>
@@ -74,9 +80,8 @@ export default {
 .imgbtn {
   width: 200px;
 }
-.mateoPg{
-  opacity: .8;
+.mateoPg {
+  opacity: 0.8;
   width: 40px;
-  
 }
 </style>

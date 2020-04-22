@@ -7,7 +7,7 @@ export default {
     liveUrl: 'https://www.mateopg.com/'
   },
   server: {
-    port: 3000
+    port: 3008
   },
   router: {
     middleware: 'i18n'

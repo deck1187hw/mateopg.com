@@ -1,5 +1,5 @@
 const PrismicConfig = require("../prismic.config");
-const textUtils = require("../text-utils");
+
 
 import Prismic from "prismic-javascript";
 
@@ -28,6 +28,7 @@ module.exports = async function getAppRoutes() {
   let nonDynPages = addLangs([
     "/",
     "/about-me",
+    "/blog",
     "/privacy-policy"
   ], true);
 
@@ -35,24 +36,41 @@ module.exports = async function getAppRoutes() {
 
 
 
-  const blog = api
-    .query(Prismic.Predicates.at("document.type", "blog_post"),{  pageSize: 200 })
+  const blog_es = api
+    .query(Prismic.Predicates.at("document.type", "blog_post"),{  lang: 'es-es' })
+    .then(response => {
+      console.log('response: ',response)
+      return response.results.map(payload => {
+        return {
+          route: `/es/blog/${payload.uid}`,
+          payload
+        };
+      });
+    });
+ 
+
+    const blog_en = api
+    .query(Prismic.Predicates.at("document.type", "blog_post"),{  lang: 'en-gb' })
     .then(response => {
       return response.results.map(payload => {
         return {
-          route: `/blog/${payload.uid}`,
+          route: `/en/blog/${payload.uid}`,
           payload
         };
       });
     });
 
 
+
   return Promise.all([
-    blog
+    blog_es,
+    blog_en
   ]).then(values => {
-    let blog = addLangs(values[0]);
+    let blog_es = values[0];
+    let blog_en = values[1];
     return [
-      ...blog,
+      ...blog_es,
+      ...blog_en,
       ...nonDynPages
     ];
   });
